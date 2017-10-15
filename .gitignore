@@ -22,3 +22,4 @@ Berksfile.lock
 Policyfile.lock.json
 
 /cookbooks
+.imagr_cookbook_testing
