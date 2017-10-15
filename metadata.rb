@@ -10,4 +10,4 @@ source_url 'https://github.com/americanhanko/imagr-cookbook'
 issues_url 'https://github.com/americanhanko/imagr-cookbook/issues'
 supports 'ubuntu'
 
-gem 'plist'
+# gem 'plist'
