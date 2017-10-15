@@ -7,5 +7,4 @@ property :hidden?, [TrueClass, FalseClass], default: false
 property :bless_target?, [TrueClass, FalseClass], default: true
 
 action :create do
-  puts ''
 end
