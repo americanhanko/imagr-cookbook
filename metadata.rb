@@ -9,3 +9,5 @@ chef_version '~> 13' if respond_to?(:chef_version)
 source_url 'https://github.com/americanhanko/imagr-cookbook'
 issues_url 'https://github.com/americanhanko/imagr-cookbook/issues'
 supports 'ubuntu'
+
+gem 'plist'
