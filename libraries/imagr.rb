@@ -10,9 +10,6 @@
 #
 module Imagr
   module ImagrHelpers
-    # def my_helper_method
-    #   # help method implementation
-    # end
   end
 end
 
