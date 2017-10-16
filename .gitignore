@@ -102,3 +102,4 @@ Vagrantfile
 .vagrant
 data_bags
 .imagr_cookbook_testing
+examples/
