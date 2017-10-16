@@ -2,20 +2,27 @@ resource_name :imagr_workflow
 
 property :name, String, name_property: true, required: true
 property :description, String, default: ''
+
+# Properties for an imagr workflow represent the workflow level configuration settings:
 property :restart_action, [NilClass, String], default: nil
 property :first_boot_reboot, [TrueClass, FalseClass], default: true
 property :hidden, [TrueClass, FalseClass], default: false
 property :bless_target, [TrueClass, FalseClass], default: true
 
 action :initialize do
-  plist = {}
-  plist['name'] = new_resource.name
-  plist['description'] = new_resource.description
-  plist['restart_action'] = new_resource.restart_action
-  plist['first_boot_reboot'] = new_resource.first_boot_reboot
-  plist['hidden'] = new_resource.hidden
-  plist['bless_target'] = new_resource.bless_target
-  plist.to_plist
-  f = File.out('imagr_config.plist', 'w')
-  f.write(plist)
+  ImagrWorkspace.new
 end
+
+# %w(foo bar).each_with_object({}) do |key, value|
+#   plist[key] = value if value
+# end
+
+# pry(main)> imagr_config['workflows'].first.keys
+# ==> ["name", "description", "components", "restart_action", "bless_target"]
+
+# pry(main)> sip['workflows'].first['components']
+# => [{"type"=>"included_workflow", "name"=>"disableSIP"},
+#  {"type"=>"included_workflow", "name"=>"bootMacOSX"}]
+# pry(main)>
+
+# new_resource.send(key) if new_resource.send(key)
