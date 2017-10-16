@@ -4,8 +4,10 @@ module ImagrCookbook
 
     attr_accessor :imagr_config
 
-    def initialize
-      @imagr_config = {}
+    action_class do
+      def imagr_config
+        {}
+      end
     end
 
     resource_name :imagr_workflow
