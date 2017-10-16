@@ -1,4 +1,4 @@
-module ImagrCookbook
+module Imagr
   class ImagrWorkflow < Chef::Resource
     require 'plist'
 

@@ -1,27 +1,18 @@
 ---
 driver:
   name: vagrant
-  provider: parallels
-  customize:
-    memory: 8192
-    cpus: 2
+  network:
+    - ["forwarded_port", {guest: 80, host: 8080}]
 
 provisioner:
   name: chef_zero
+  always_update_cookbooks: true
 
 verifier:
   name: inspec
 
-transport:
-  name: ssh
-  elevated: true
-
 platforms:
-  - name: apex/macos-10.12.6
-    driver:
-      box: apex/macos-10.12.6
-      box_url: http://office-infra-boxes.corp.microsoft.com:8099/apex/macos-10.12.6
-      box_check_update: true
+  - name: ubuntu-16.04
 
 suites:
   - name: default
