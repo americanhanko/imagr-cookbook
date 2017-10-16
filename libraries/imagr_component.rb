@@ -12,3 +12,8 @@ action :bind do
   plist_structure = {}
   plist_structure
 end
+
+class Chef::Resource::ImagrComponent
+  def initialize
+  end
+end

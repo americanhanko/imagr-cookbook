@@ -34,3 +34,8 @@ end
 # pry(main)>
 
 # new_resource.send(key) if new_resource.send(key)
+
+class Chef::Resource::ImagrWorkspace
+  def initialize
+  end
+end
