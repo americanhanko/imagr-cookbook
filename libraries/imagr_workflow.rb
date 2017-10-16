@@ -3,6 +3,8 @@ module ImagrCookbook
     require 'plist'
 
     attr_accessor :imagr_config
+    attr_accessor :workflow_config
+
     @workflow_config = []
     @imagr_config = { 'workflows' => @workflow_config }
 
@@ -20,12 +22,14 @@ module ImagrCookbook
     property :bless_target, [TrueClass, FalseClass], default: true
 
     action :create do
-      @workflow_config.push('name' => new_resource.name,
-                            'description' => new_resource.description,
-                            'restart_action' => new_resource.restart_action,
-                            'first_boot_reboot' => new_resource.first_boot_reboot,
-                            'hidden' => new_resource.hidden,
-                            'bless_target' => new_resource.bless_target)
+      configuration = { 'name' => new_resource.name,
+                        'description' => new_resource.description,
+                        'restart_action' => new_resource.restart_action,
+                        'first_boot_reboot' => new_resource.first_boot_reboot,
+                        'hidden' => new_resource.hidden,
+                        'bless_target' => new_resource.bless_target }
+
+      @workflow_config.push(configuration)
 
       plist = Plist::Emit.dump(@imagr_config)
 
