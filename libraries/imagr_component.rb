@@ -4,20 +4,18 @@ module Imagr
   class ImagrComponent < Imagr::ImagrWorkflow
     resource_name :imagr_component
 
-    default_action :create
-
-    property :component_type, String, name_property: true
+    property :type, String, name_property: true
     property :workflow, String, required: true
 
-    case new_resource.component_type
-    when 'image'
-    when 'package'
-    when 'computer_name'
-    when 'localization'
-    when 'scripts'
-    when 'partition'
-    when 'erase_volume'
-    end
+    default_action :create
+
+    #when 'image'
+    #when 'package'
+    #when 'computer_name'
+    #when 'localization'
+    #when 'scripts'
+    #when 'partition'
+    #when 'erase_volume'
 
     action :create do
       ImagrWorkflow.imagr_config['workflows'][new_resource.workflow]['components'] = {}
