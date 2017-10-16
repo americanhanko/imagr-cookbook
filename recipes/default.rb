@@ -6,4 +6,3 @@ end
 imagr_component 'included_workflow' do
   name 'disable_sip'
 end
-
