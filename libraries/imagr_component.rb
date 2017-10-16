@@ -1,7 +1,7 @@
 require_relative 'imagr_workflow'
 
 module Imagr
-  class ImagrComponent < Imagr::ImagrWorkflow
+  class ImagrComponent < ImagrWorkflow
     resource_name :imagr_component
 
     property :type, String, name_property: true

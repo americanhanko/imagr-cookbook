@@ -4,5 +4,5 @@ imagr_workflow 'AutoInfra ChangeOS (Yosemite)' do
 end
 
 imagr_component 'included_workflow' do
-  name 'disable_sip'
+  workflow 'disable_sip'
 end
