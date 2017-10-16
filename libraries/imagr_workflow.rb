@@ -1,23 +1,39 @@
-class ImagrWorkflow
-  attr_accessor
+module ImagrCookbook
+  class ImagrWorkflow < Chef::Resource
+    require 'plist'
 
-  def initialize
-    @content = {}
-  end
+    attr_accessor :imagr_config
 
-  resource_name :imagr_workflow
+    def initialize
+      @imagr_config = {}
+    end
 
-  property :name, String, name_property: true, required: true
-  property :description, String, default: ''
+    resource_name :imagr_workflow
 
-  # Properties for an imagr workflow represent the workflow level configuration settings:
-  property :restart_action, [NilClass, String], default: nil
-  property :first_boot_reboot, [TrueClass, FalseClass], default: true
-  property :hidden, [TrueClass, FalseClass], default: false
-  property :bless_target, [TrueClass, FalseClass], default: true
+    property :name, String, name_property: true, required: true
+    property :description, String, default: ''
 
-  action :initialize do
-    ImagrWorkspace.new
+    # Properties for an imagr workflow represent the workflow level configuration settings:
+    property :restart_action, [NilClass, String], default: nil
+    property :first_boot_reboot, [TrueClass, FalseClass], default: true
+    property :hidden, [TrueClass, FalseClass], default: false
+    property :bless_target, [TrueClass, FalseClass], default: true
+
+    action :create do
+      @imagr_config = {
+        'name' => new_resource.name,
+        'description' => new_resource.description,
+        'restart_action' => new_resource.restart_action,
+        'first_boot_reboot' => new_resource.first_boot_reboot,
+        'hidden' => new_resource.hidden,
+        'bless_target' => new_resource.bless_target,
+      }
+      plist = Plist::Emit.dump(ImagrWorkflow.imagr_config)
+
+      file "#{ENV['HOME']}/imagr_config.plist" do
+        content plist
+      end
+    end
   end
 end
 
@@ -34,8 +50,3 @@ end
 # pry(main)>
 
 # new_resource.send(key) if new_resource.send(key)
-
-class Chef::Resource::ImagrWorkspace
-  def initialize
-  end
-end
