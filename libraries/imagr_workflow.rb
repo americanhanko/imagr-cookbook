@@ -10,6 +10,8 @@ module ImagrCookbook
 
     resource_name :imagr_workflow
 
+    default_action :create
+
     property :name, String, name_property: true, required: true
     property :description, String, default: ''
 

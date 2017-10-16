@@ -1,19 +1,20 @@
-resource_name :component_for_workflow
+module ImagrCookbook
+  class ImagrComponent < Chef::Resource
 
-property :workflow_name, String, name_property: true
+  resource_name :imagr_component
 
-property :image, String
-property :package, String
-property :computer_name, String
-property :localization, String
-property :scripts, String
+  default_action :bind
 
-action :bind do
-  plist_structure = {}
-  plist_structure
-end
+  property :workflow_name, String, name_property: true
 
-class Chef::Resource::ImagrComponent
-  def initialize
+  property :image, String
+  property :package, String
+  property :computer_name, String
+  property :localization, String
+  property :scripts, String
+
+  action :bind do
+    plist_structure = {}
+    plist_structure
   end
 end
