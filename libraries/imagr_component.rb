@@ -7,8 +7,17 @@ module Imagr
     default_action :create
 
     property :component_type, String, name_property: true
+    property :workflow, String, required: true
 
-    # component_types = %i[image package computer_name localization scripts partition erase_volume]
+    case new_resource.component_type
+    when 'image'
+    when 'package'
+    when 'computer_name'
+    when 'localization'
+    when 'scripts'
+    when 'partition'
+    when 'erase_volume'
+    end
 
     action :create do
       ImagrWorkflow.imagr_config['workflows'][new_resource.workflow]['components'] = {}

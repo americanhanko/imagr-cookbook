@@ -19,12 +19,12 @@ module Imagr
     property :bless_target, [TrueClass, FalseClass], default: true, desired_state: false
 
     action :create do
-     @@imagr_config['workflows'] = { name:              new_resource.name,
-                                    description:       new_resource.description,
-                                    restart_action:    new_resource.restart_action,
-                                    first_boot_reboot: new_resource.first_boot_reboot,
-                                    hidden:            new_resource.hidden,
-                                    bless_target:      new_resource.bless_target }
+      @@imagr_config['workflows'] = { name:              new_resource.name,
+                                      description:       new_resource.description,
+                                      restart_action:    new_resource.restart_action,
+                                      first_boot_reboot: new_resource.first_boot_reboot,
+                                      hidden:            new_resource.hidden,
+                                      bless_target:      new_resource.bless_target }
 
       plist = Plist::Emit.dump(@@imagr_config)
 
