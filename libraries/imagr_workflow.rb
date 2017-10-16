@@ -2,7 +2,7 @@ module Imagr
   class ImagrWorkflow < Chef::Resource
     require 'plist'
 
-    imagr_config = {}
+    self.imagr_config = {}
 
     resource_name :imagr_workflow
 
@@ -26,7 +26,7 @@ module Imagr
                                     hidden:            new_resource.hidden,
                                     bless_target:      new_resource.bless_target }
 
-      plist = Plist::Emit.dump(imagr_config)
+      self.plist = Plist::Emit.dump(imagr_config)
 
       file new_resource.path do
         content plist

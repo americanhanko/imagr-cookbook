@@ -1,22 +1,22 @@
-#
-# Chef Documentation
-# https://docs.chef.io/libraries.html
-#
-
-#
-# This module name was auto-generated from the cookbook name. This name is a
-# single word that starts with a capital letter and then continues to use
-# camel-casing throughout the remainder of the name.
-#
 module Imagr
-  module HelpersHelpers
-    #
-    # Define the methods that you would like to assist the work you do in recipes,
-    # resources, or templates.
-    #
-    # def my_helper_method
-    #   # help method implementation
-    # end
+  module ComponentHelpers
+    def component_data
+      {}
+    end
+
+    def package; end
+
+    def image; end
+
+    def computer; end
+
+    def localization; end
+
+    def partition; end
+
+    def erase_volume; end
+
+    def scripts; end
   end
 end
 

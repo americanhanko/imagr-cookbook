@@ -1,20 +1,17 @@
-module ImagrCookbook
-  class ImagrComponent < Chef::Resource
+require_relative 'imagr_workflow'
+
+module Imagr
+  class ImagrComponent < Imagr::ImagrWorkflow
     resource_name :imagr_component
 
-    default_action :bind
+    default_action :create
 
-    property :workflow_name, String, name_property: true
+    property :component_type, String, name_property: true
 
-    property :image, String
-    property :package, String
-    property :computer_name, String
-    property :localization, String
-    property :scripts, String
+    # component_types = %i[image package computer_name localization scripts partition erase_volume]
 
-    action :bind do
-      plist_structure = {}
-      plist_structure
+    action :create do
+      Imagr::ImagrWorkflow.imagr_config['workflows'][new_resource.workflow]['components'] = {}
     end
   end
 end
