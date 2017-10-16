@@ -11,7 +11,7 @@ module Imagr
     # component_types = %i[image package computer_name localization scripts partition erase_volume]
 
     action :create do
-      Imagr::ImagrWorkflow.imagr_config['workflows'][new_resource.workflow]['components'] = {}
+      ImagrWorkflow.imagr_config['workflows'][new_resource.workflow]['components'] = {}
     end
   end
 end
