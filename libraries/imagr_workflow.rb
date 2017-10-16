@@ -3,12 +3,7 @@ module ImagrCookbook
     require 'plist'
 
     attr_accessor :imagr_config
-
-    action_class do
-      def imagr_config
-        {}
-      end
-    end
+    @imagr_config = {}
 
     resource_name :imagr_workflow
 
