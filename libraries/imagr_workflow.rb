@@ -27,7 +27,7 @@ module ImagrCookbook
         'hidden' => new_resource.hidden,
         'bless_target' => new_resource.bless_target,
       }
-      plist = Plist::Emit.dump(ImagrWorkflow.imagr_config)
+      plist = Plist::Emit.dump(@imagr_config)
 
       file "#{ENV['HOME']}/imagr_config.plist" do
         content plist
