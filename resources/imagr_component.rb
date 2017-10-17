@@ -1,6 +1,15 @@
 resource_name :imagr_component
 
-property :type, String, name_property: true
+available_types = %w(included_workflow
+                     image
+                     package
+                     computer_name
+                     localization
+                     scripts
+                     partition
+                     erase_volume)
+
+property :type, available_types, name_property: true
 property :workflow, String, required: true
 
 # Component Types
