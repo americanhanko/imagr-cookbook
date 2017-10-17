@@ -1,5 +1,3 @@
-require_relative '../libraries/imagr_workflow'
-
 resource_name :imagr_component
 
 property :type, String, name_property: true
