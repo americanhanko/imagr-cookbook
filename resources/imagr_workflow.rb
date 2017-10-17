@@ -20,7 +20,8 @@ action :create do
                                 restart_action:    new_resource.restart_action,
                                 first_boot_reboot: new_resource.first_boot_reboot,
                                 hidden:            new_resource.hidden,
-                                bless_target:      new_resource.bless_target }
+                                bless_target:      new_resource.bless_target,
+                                components: [] }
 
   plist = Plist::Emit.dump(imagr_config)
 
