@@ -12,25 +12,31 @@ property :first_boot_reboot, [TrueClass, FalseClass], default: true, desired_sta
 property :hidden, [TrueClass, FalseClass], default: false, desired_state: false
 property :bless_target, [TrueClass, FalseClass], default: true, desired_state: false
 
-action :create do
-  require 'plist'
-  imagr_config = {}
-  imagr_config['workflows'] = { name:              new_resource.name,
-                                description:       new_resource.description,
-                                restart_action:    new_resource.restart_action,
-                                first_boot_reboot: new_resource.first_boot_reboot,
-                                hidden:            new_resource.hidden,
-                                bless_target:      new_resource.bless_target,
-                                components: [] }
+action_class do
+  include ImagrCookbook::Helpers
 
-  plist = Plist::Emit.dump(imagr_config)
-
-  file new_resource.path do
-    content plist
-    mode '0755'
-    owner ENV['SUDO_USER']
-    group ENV['SUDO_USER']
+  def add_to_plist
+    { name:              new_resource.name,
+      description:       new_resource.description,
+      restart_action:    new_resource.restart_action,
+      first_boot_reboot: new_resource.first_boot_reboot,
+      hidden:            new_resource.hidden,
+      bless_target:      new_resource.bless_target,
+      components:        [] }
   end
+end
+
+load_current_value do |desired|
+  unfold_assistant('desired.name', desired.name, '=')
+end
+
+action :create do
+  unfold_assistant('new_resource.class', new_resource.class, '+')
+  unfold_assistant('current_resource.class', current_resource.class, '+')
+  unfold_assistant('new_resource.class.class', new_resource.class.class, '+')
+  unfold_assistant('new_resource.resource_name', new_resource.resource_name, '+')
+  unfold_assistant('new_resource.methods', new_resource.methods, '+')
+  unfold_assistant('new_resource.pretty_inspect', new_resource.pretty_inspect, '+')
 end
 
 # %w(foo bar).each_with_object({}) do |key, value|

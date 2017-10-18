@@ -1,39 +1,43 @@
-module Imagr
-  module ComponentHelpers
-    def component_data
-      {}
+module ImagrCookbook
+  module Helpers
+    def unfold_assistant(content, property, char)
+      message = " #{content}: #{property} "
+      length = handle_message(message)
+      puts "\n"
+      puts char * width
+      puts "#{char * left_width(length)}#{message}#{char * right_width(length)}"
+      puts char * width
+      puts "\n" unless char == '-'
     end
 
-    def package; end
+    private
 
-    def image; end
+    def handle_message(message)
+      if message.length > width
+        width
+      else
+        message.length
+      end
+    end
 
-    def computer; end
+    def width
+      150
+    end
 
-    def localization; end
+    def left_width(length)
+      difference = width - length
+      difference / 2
+    end
 
-    def partition; end
-
-    def erase_volume; end
-
-    def scripts; end
+    def right_width(length)
+      difference = left_width(length)
+      if length.odd?
+        difference + 1
+      else
+        difference
+      end
+    end
   end
 end
 
-#
-# The module you have defined may be extended within the recipe to grant the
-# recipe the helper methods you define.
-#
-# Within your recipe you would write:
-#
-#     extend Imagr::HelpersHelpers
-#
-#     my_helper_method
-#
-# You may also add this to a single resource within a recipe:
-#
-#     template '/etc/app.conf' do
-#       extend Imagr::HelpersHelpers
-#       variables specific_key: my_helper_method
-#     end
-#
+Chef::Resource.include(ImagrCookbook::Helpers)
