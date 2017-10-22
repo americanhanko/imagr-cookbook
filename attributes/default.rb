@@ -1,9 +1,10 @@
-default['imagr']['password'] = nil
-default['imagr']['autorun'] = nil
-default['imagr']['autorun_time'] = nil
-default['imagr']['default_workflow'] = nil
-default['imagr']['background_image'] = nil
-default['imagr']['wait_for_network'] = nil
-default['imagr']['restart_action'] = nil
+default['imagr']['plist']['password'] = nil
+default['imagr']['plist']['autorun'] = nil
+default['imagr']['plist']['autorun_time'] = nil
+default['imagr']['plist']['default_workflow'] = nil
+default['imagr']['plist']['background_image'] = nil
+default['imagr']['plist']['wait_for_network'] = nil
+default['imagr']['plist']['restart_action'] = nil
 
-default['imagr']['component_host']
+default['imagr']['plist']['workflows'] = []
+default['imagr']['config']['path'] = "#{ENV['HOME']}/imagr_config.plist"

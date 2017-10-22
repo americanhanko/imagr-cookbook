@@ -4,7 +4,6 @@ default_action :create
 
 property :name, String, name_property: true, required: true, desired_state: false
 property :description, String, default: '', desired_state: false
-property :path, String, default: "#{ENV['HOME']}/imagr_config.plist", desired_state: false
 
 # Properties for an imagr workflow represent the workflow level configuration settings:
 property :restart_action, [NilClass, String], default: nil, desired_state: false
@@ -26,17 +25,13 @@ action_class do
   end
 end
 
-load_current_value do |desired|
-  unfold_assistant('desired.name', desired.name, '=')
-end
-
 action :create do
-  unfold_assistant('new_resource.class', new_resource.class, '+')
-  unfold_assistant('current_resource.class', current_resource.class, '+')
-  unfold_assistant('new_resource.class.class', new_resource.class.class, '+')
-  unfold_assistant('new_resource.resource_name', new_resource.resource_name, '+')
-  unfold_assistant('new_resource.methods', new_resource.methods, '+')
-  unfold_assistant('new_resource.pretty_inspect', new_resource.pretty_inspect, '+')
+  require 'plist'
+  node.default['imagr']['plist']['workflows'] << add_to_plist
+
+  file node.default['imagr']['config']['path'] do
+    content Plist::Emit.dump(node.default['imagr']['plist'])
+  end
 end
 
 # %w(foo bar).each_with_object({}) do |key, value|
