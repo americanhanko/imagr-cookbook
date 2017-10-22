@@ -39,8 +39,6 @@ property :partitions, Array, default: [], desired_state: false
 default_action :create
 
 action_class do
-  include ImagrCookbook::Helpers
-
   def options
     {
       package:           {
