@@ -5,7 +5,8 @@ available_types = %w(included_workflow
                      package
                      computer_name
                      localization
-                     script
+                     script_inline
+                     script_url
                      partition
                      erase_volume)
 

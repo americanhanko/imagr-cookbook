@@ -23,7 +23,7 @@ imagr_component 'computer_name' do
   parent_workflow 'AutoInfra ChangeOS (Yosemite)'
 end
 
-imagr_component 'script' do
+imagr_component 'script_url' do
   url 'http://autoimagr/scripts/run_changeos_setup.sh'
   parent_workflow 'AutoInfra ChangeOS (Yosemite)'
 end
