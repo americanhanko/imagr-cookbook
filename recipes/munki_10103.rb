@@ -22,12 +22,12 @@ imagr_component 'package' do
   parent_workflow 'Munki_10103'
 end
 
-imagr_component 'script' do
-  content <<-EOF
-  #!/bin/bash
-  echo "&lt;"
-  echo "{{target_volume}}"
-  /usr/bin/touch "{{target_volume}}/some_file"
-  EOF
-  parent_workflow 'Munki_10103'
-end
+# imagr_component 'script' do
+#   content <<-EOF
+#   #!/bin/bash
+#   echo "&lt;"
+#   echo "{{target_volume}}"
+#   /usr/bin/touch "{{target_volume}}/some_file"
+#   EOF
+#   parent_workflow 'Munki_10103'
+# end

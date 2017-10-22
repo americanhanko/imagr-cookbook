@@ -12,50 +12,28 @@ available_types = %w(included_workflow
 property :type, available_types, name_property: true, required: true
 property :parent_workflow, String, required: true
 
-# Component Types
-
-## included_workflow
 property :workflow_name, String, default: '', desired_state: false
 property :script, String, default: '', desired_state: false
-
-## image
 property :url, String, default: '', desired_state: false
 property :verify, [TrueClass, FalseClass], default: true, desired_state: false
-
-## package
 property :first_boot, [TrueClass, FalseClass], default: false, desired_state: false
 property :additional_headers, Array, default: [], desired_state: false
-
-## computer_name
 property :use_serial, [TrueClass, FalseClass], default: false, desired_state: false
 property :auto, [TrueClass, FalseClass], default: false, desired_state: false
-
-## localization
 property :keyboard_layout_name, String, default: '', desired_state: false
 property :keyboard_layout_id, String, default: '', desired_state: false
 property :language, String, default: '', desired_state: false
 property :locale, String, default: '', desired_state: false
 property :timezone, String, default: '', desired_state: false
-
-## script: method 1
 property :content, String, default: '', desired_state: false
-property :first_boot, [TrueClass, FalseClass], default: false, desired_state: false
+property :name, String, default: '', desired_state: false
+property :format, String, default: '', desired_state: false
+property :map, String, default: '', desired_state: false
+property :partitions, Array, default: [], desired_state: false
 
 # {{target_volume}} - used to refer to the target volume
 # {{serial_number}} - access to the machine's serial number
 # {{machine_model}} - access to the machine's model
-
-## script: method 2
-property :url, String, default: '', desired_state: false
-property :additional_headers, Array, default: [], desired_state: false
-
-## partition
-property :map, String, default: '', desired_state: false
-property :partitions, Array, default: [], desired_state: false
-
-## erase_volume
-property :name, String, default: '', desired_state: false
-property :format, String, default: '', desired_state: false
 
 default_action :create
 
@@ -66,14 +44,14 @@ action_class do
     {
       package:           {
         url:    new_resource.url,
-        verify: new_resource.verify },
+        first_boot: new_resource.first_boot,
+        additional_headers: new_resource.additional_headers },
       included_workflow: {
         workflow_name: new_resource.workflow_name,
         script:        new_resource.script },
       image:             {
         url:                new_resource.url,
-        first_boot:         new_resource.first_boot,
-        additional_headers: new_resource.additional_headers },
+        verify: new_resource.verify },
       computer_name:     {
         use_serial: new_resource.use_serial,
         auto:       new_resource.auto },
