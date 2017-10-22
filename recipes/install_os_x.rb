@@ -7,4 +7,5 @@ end
 
 imagr_component 'package' do
   url 'http://192.168.178.135/COSXIP-10.11.3.dmg'
+  parent_workflow 'Install OS X'
 end

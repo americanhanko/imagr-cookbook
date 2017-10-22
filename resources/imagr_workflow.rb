@@ -6,7 +6,7 @@ property :name, String, name_property: true, required: true, desired_state: fals
 property :description, String, default: '', desired_state: false
 
 # Properties for an imagr workflow represent the workflow level configuration settings:
-property :restart_action, [NilClass, String], default: nil, desired_state: false
+property :restart_action, [NilClass, String], default: '', desired_state: false
 property :first_boot_reboot, [TrueClass, FalseClass], default: true, desired_state: false
 property :hidden, [TrueClass, FalseClass], default: false, desired_state: false
 property :bless_target, [TrueClass, FalseClass], default: true, desired_state: false
