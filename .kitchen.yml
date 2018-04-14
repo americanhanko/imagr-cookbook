@@ -7,15 +7,18 @@ provisioner:
 
 verifier:
   name: inspec
+  inspec_tests:
+    - test/smoke/default
 
 platforms:
   - name: ubuntu-16.04
-
-suites:
-  - name: default
     run_list:
       - recipe[imagr::default]
-    verifier:
-      inspec_tests:
-        - test/smoke/default
-    attributes:
+
+suites:
+  - name: chef-13
+    provisioner:
+      product_version: 13
+  - name: chef-14
+    provisioner:
+      product_version: 14
