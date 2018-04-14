@@ -11,7 +11,7 @@ provisioner:
 verifier:
   name: inspec
   inspec_tests:
-    - test/smoke/default
+    - test/integration/default
 
 platforms:
   - name: ubuntu-16.04
