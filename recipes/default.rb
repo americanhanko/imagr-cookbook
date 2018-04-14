@@ -3,5 +3,5 @@ template node['imagr']['app']['plist'] do
 end
 
 dmg_package 'Imagr' do
-  source 'https://github.com/grahamgilbert/imagr/releases/download/1.4.1/Imagr-1.4.1.dmg'
+  source node['imagr']['app']['source']
 end

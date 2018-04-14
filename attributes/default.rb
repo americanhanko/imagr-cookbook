@@ -10,3 +10,5 @@ default['imagr']['config']['plist'] = 'imagr_config.plist'
 
 default['imagr']['url'] = ''
 default['imagr']['app']['plist'] = '/Library/Preferences/com.grahamgilbert.Imagr.plist'
+default['imagr']['app']['version'] = '1.4.1'
+default['imagr']['app']['source'] = "https://github.com/grahamgilbert/imagr/releases/download/#{node['imagr']['app']['version']}/Imagr-#{node['imagr']['app']['version']}.dmg"
