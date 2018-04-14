@@ -11,3 +11,5 @@ issues_url 'https://github.com/americanhanko/imagr-cookbook/issues'
 supports 'ubuntu'
 
 gem 'plist'
+
+depends 'dmg'
