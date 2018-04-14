@@ -1,9 +1,11 @@
 # Imagr Cookbook
+
 [Imagr](https://github.com/grahamgilbert/imagr) is a macOS imaging and workflow solution written by Graham Gilbert.
 
 This cookbook is written to make creating and modifying the `imagr_config.plist` easier. Root Plist settings are set using attributes, workflow settings are set using the `imagr_workflow` resource, and the component settings are set using multiple `imagr_component` resources.
 
-## Available attributes:
+## Attributes
+
 ```ruby
 default['imagr']['plist']['password'] = ''
 default['imagr']['plist']['autorun'] = ''
@@ -17,9 +19,10 @@ default['imagr']['plist']['workflows'] = []
 default['imagr']['config']['path'] = "#{ENV['HOME']}/imagr_config.plist"
 ```
 
-## Example usage:
+## Example usage
 
 ### recipes/munki_10103.rb
+
 ```ruby
 imagr_workflow 'Munki_10103' do
   description 'Deploys a 10.10.3 image with Munki Tools and its configuration.'
@@ -57,6 +60,7 @@ end
 ```
 
 ### recipes/install_os_x.rb
+
 ```ruby
 imagr_workflow 'Install OS X' do
   description 'COSXIP example workflow to installs OS X on the target volume.'
