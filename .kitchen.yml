@@ -2,6 +2,7 @@
 driver:
   name: vagrant
   provider: parallels
+  box: apex/macos-10.13.4
   box_check_update: true
 
 provisioner:
@@ -15,15 +16,14 @@ verifier:
 
 platforms:
   - name: ubuntu-16.04
+    driver:
+      box: ubuntu-16.04
 
   - name: highsierra-chef13
-    driver:
-      box: apex/macos-10.13.3
     provisioner:
       product_version: 13
+
   - name: highsierra-chef14
-    driver:
-      box: apex/macos-10.13.3
     provisioner:
       product_version: 14
 
