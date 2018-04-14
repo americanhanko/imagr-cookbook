@@ -1,6 +1,8 @@
 ---
 driver:
   name: vagrant
+  provider: parallels
+  box_check_update: true
 
 provisioner:
   product_name: chef
@@ -12,13 +14,21 @@ verifier:
 
 platforms:
   - name: ubuntu-16.04
-    run_list:
-      - recipe[imagr::default]
 
-suites:
-  - name: chef-13
+  - name: highsierra-chef13
+    driver:
+      box: apex/macos-10.13.3
     provisioner:
       product_version: 13
-  - name: chef-14
+  - name: highsierra-chef14
+    driver:
+      box: apex/macos-10.13.3
     provisioner:
       product_version: 14
+
+suites:
+  - name: default
+    run_list:
+      - recipe[imagr::default]
+    excludes:
+      - ubuntu-16.04
