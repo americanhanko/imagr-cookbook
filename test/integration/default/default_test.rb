@@ -7,7 +7,7 @@ describe directory('/Applications/Imagr.app') do
   it { should exist }
 end
 
-describe launchd_service('imagr') do
+describe launchd_service('com.grahamgilbert.Imagr') do
   it { should be_installed }
   it { should be_enabled }
   it { should be_running }
