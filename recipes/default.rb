@@ -8,6 +8,7 @@ end
 
 launchd 'com.grahamgilbert.Imagr' do
   program '/Applications/Imagr.app/Contents/MacOS/Imagr'
-  launch_only_once true
+  type 'agent'
+  run_at_load true
   action :enable
 end
