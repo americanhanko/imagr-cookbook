@@ -44,31 +44,39 @@ action_class do
       package:           {
         url:    new_resource.url,
         first_boot: new_resource.first_boot,
-        additional_headers: new_resource.additional_headers },
+        additional_headers: new_resource.additional_headers,
+      },
       included_workflow: {
         workflow_name: new_resource.workflow_name,
-        script:        new_resource.script },
+        script:        new_resource.script,
+      },
       image:             {
         url:                new_resource.url,
-        verify: new_resource.verify },
+        verify: new_resource.verify,
+      },
       computer_name:     {
         use_serial: new_resource.use_serial,
-        auto:       new_resource.auto },
+        auto:       new_resource.auto,
+      },
       localization:      {
         keyboard_layout_id:   new_resource.keyboard_layout_id,
-        keyboard_layout_name: new_resource.keyboard_layout_name },
+        keyboard_layout_name: new_resource.keyboard_layout_name,
+      },
       script_inline:     {
         content:    new_resource.content,
         first_boot: new_resource.first_boot },
       script_url:        {
         url:                new_resource.url,
-        additional_headers: new_resource.additional_headers },
+        additional_headers: new_resource.additional_headers,
+      },
       erase_volume:      {
         name:   new_resource.name,
-        format: new_resource.format },
+        format: new_resource.format,
+      },
       partition:         {
         map:        new_resource.map,
-        partitions: new_resource.partitions },
+        partitions: new_resource.partitions,
+      },
     }
   end
 end
