@@ -5,8 +5,10 @@ driver:
     - ["forwarded_port", {guest: 80, host: 8080}]
 
 provisioner:
-  name: chef_zero
   always_update_cookbooks: true
+  install_strategy: once
+  product_name: chef
+  product_version: latest
 
 verifier:
   name: inspec
@@ -18,7 +20,3 @@ suites:
   - name: default
     run_list:
       - recipe[imagr::default]
-    verifier:
-      inspec_tests:
-        - test/smoke/default
-    attributes:

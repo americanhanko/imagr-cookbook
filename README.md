@@ -1,7 +1,8 @@
 # Imagr Cookbook
-[Imagr](https://github.com/grahamgilbert/imagr) is a macOS imaging and workflow solution written by Graham Gilbert.
+[Imagr](https://github.com/grahamgilbert/imagr) is a macOS imaging and
+workflow solution written by Graham Gilbert.
 
-This cookbook is written to make creating and modifying the `imagr_config.plist` easier. Root Plist settings are set using attributes, workflow settings are set using the `imagr_workflow` resource, and the component settings are set using multiple `imagr_component` resources.
+This cookbook is written to make creating and modifying the `imagr_config.plist` easier. Root property list settings are set using attributes, workflow settings are set using the `imagr_workflow` resource, and the component settings are set using multiple `imagr_component` resources.
 
 ## Available attributes:
 ```ruby
