@@ -3,7 +3,10 @@ driver:
   name: vagrant
 
 provisioner:
+  always_update_cookbooks: true
+  install_strategy: once
   product_name: chef
+  product_version: latest
 
 verifier:
   name: inspec
